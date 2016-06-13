@@ -1,0 +1,16 @@
+{
+  "name": "schen59-page",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Shaofeng Chen's personal page",
+  "repository": "https://github.com/schen59/schen59.github.io",
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "^1.7.7"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+
+    "prestart": "npm install"
+  }
+}
