@@ -1,0 +1,14 @@
+{
+  "name": "schen59-page",
+  "description": "Shaofeng Chen's personal page",
+  "version": "0.0.0",
+  "homepage": "https://github.com/schen59/schen59.github.io",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.5.x",
+    "angular-route": "1.5.x",
+    "bootstrap": "3.3.x",
+    "jquery": "2.2.x"
+  }
+}
