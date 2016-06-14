@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-offset-2" style="color:#00543c"><h1>Single Image Super-resolution from self-similarity</h1></div>
+</div>
+
+<div class="row">
+    <div class="col-md-offset-4" style="color:#FDBB30"><em><h3>by Shaofeng Chen</h3></em></div>
+</div>
+
+<div class="row" id="content" data-spy="scroll" data-target="#contentBar">
+    <nav class="hidden-xs col-md-2" id="contentBar">
+        <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="400">
+            <li><a class="nav-item" href="#introduciton">Introduction</a></li>
+            <li><a class="nav-item" href="#algorithmDetail">Algorithm Detail</a></li>
+            <li><a class="nav-item" href="#experiments">Experiments</a></li>
+        </ul>
+    </nav>
+    <div class="col-md-8" id="introduction">
+        <h3>Introduction</h3>
+        <p>
+            The goal of single image super resolution(SR) is to estimate a sharp high-resolution image from a low
+            resolution input image. Traditionally, there exits two categories of image SR algorithms.
+            One is to combine series of low-resolution images taken from the same scene with subpixel alignment to
+            reconstruct the mutual high-resolution image. Another category falls into reconstructing the high-resolution
+            image from just one singe low-resolution image with or without example database. Image super-resolution
+            offers the promise to overcome some inherent limitations of low-cost imaging devices such as cell phones and
+            surveillance cameras, and has been proved to be essential in medical and satellite imaging where higher
+            resolution images can improve the accuracy of diagnosis. Meanwhile, image SR can enhance the utilization of
+            high resolution display devices such as high-definition LCDs, and it provides a low-cost and feasible way
+            to convert standard-definition TV to HDTV.
+        </p>
+    </div>
+
+    <div class="col-md-offset-2 col-md-8" id="algorithmDetail">
+        <h3>Algorithm Detail</h3>
+        <p>
+            My experiments focused on single image super-resolution.
+            I exploit the self-example recurrence across image scales to construct the low-resolution and corresponding
+            high-resolution image dictionary which describes the co-occurrence between low-resolution and high-resolution
+            image patches, and thus avoid large database of training images. In addition, from the standpoint of image
+            statistics and compressive sensing, each high-resolution image patch can be perfectly reconstructed by the
+            sparse representation of its low-resolution counterpart. In the following part, I will firstly describe the
+            construction of low-resolution and high-resolution image dictionary, and then I will show how each high-resolution
+            patch can be reconstructed based on this dictionary and inspiration I got from sparse representation.
+            Finally, several experimental results will be demonstrated and compared to state of the art.
+            Firstly, I construct a image pyramid using the imaging model with the subsampling factor of 1.25:<br>
+            <span id="formula1">
+                <img src="images/SRLab/formula1.gif"/>
+            </span>
+
+        </p>
+    </div>
+
+</div>
