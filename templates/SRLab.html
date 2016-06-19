@@ -45,10 +45,10 @@
                 construction of low-resolution and high-resolution image dictionary, and then I will show how each high-resolution
                 patch can be reconstructed based on this dictionary and inspiration I got from sparse representation.
                 Finally, several experimental results will be demonstrated and compared to state of the art.
-                Firstly, I construct a image pyramid using the imaging model with the subsampling factor of 1.25:<br>
+                Firstly, I construct a image pyramid using the imaging model with the subsampling factor of 1.25:<br />
                 <span id="formula1">
                     <img src="images/SRLab/formula1.gif"/>
-                </span><br>
+                </span><br />
                 Here, X stands for the original high-resolution image, and Y is the burred and subsampled low-resolution
                 image simulating the imaging process of real imaging devices. H represents the blurring kernel and D is the
                 subsampling operator. An example of this kind of image pyramid is illustrated in figure 1
@@ -81,7 +81,7 @@
                 the original low-resolution input image. Based on this low-resolution / high-resolution image pairs, the
                 low-resolution / high-resolution dictionary can be constructed by the process illustrated in figure 2.
                 <div class="text-center" id="figure2">
-                    <div class="image"><img width="369" height="376" src="images/SRLab/figure2.jpg"></div>
+                    <div class="image"><img width="369" height="376" src="images/SRLab/figure2.jpg"/></div>
                     <div class="figureFooter">Figure 2. Flow chart of low-res/high-res dictionary construction.</div>
                 </div>
                 Where
@@ -99,10 +99,10 @@
                 <span id="formula4">
                     <img src="images/SRLab/formula4.gif"/>
                 </span>
-                . Then the reconstruction of its high resolution version x can be solved by minimizing the following term:<br>
+                . Then the reconstruction of its high resolution version x can be solved by minimizing the following term:<br />
                 <span id="formula5">
                     <img src="images/SRLab/formula5.gif"/>
-                </span><br>
+                </span><br />
                 Where
                 <span id="formula6">
                     <img src="images/SRLab/formula6.gif"/>
@@ -115,12 +115,73 @@
                 <span id="formula7">
                     <img src="images/SRLab/formula7.gif"/>
                 </span>
-                , the high-resolution counterpart of <em>y</em> can be reconstructed as:<br>
+                , the high-resolution counterpart of <em>y</em> can be reconstructed as:<br />
                 <span id="formula8">
                     <img src="images/SRLab/formula8.gif"/>
+                </span><br />
+                Where
+                <span id="formula9">
+                    <img src="images/SRLab/formula9.gif"/>
                 </span>
+                is the high-resolution dictionary. Rather than reconstructing the final high-resolution <em>H</em> image immediately,
+                I use a coarse-to-fine strategy to approach the resolution of <em>H</em> gradually. I reconstruct the
+                medium resolution image between the source low-resolution image and <em>H</em> by a upscale factor of
+                1.25 until I get <em>H</em>. Each time I reconstructed a new high-resolution image
+                <span id="formula10">
+                    <img src="images/SRLab/formula10.gif"/>
+                </span>
+                , I generate its low-resolution / high-resolution dictionary and add it to the current low-resolution / high-resolution
+                image dictionary. This scheme can capture the newly recovered image details and further improve the
+                numerical stability of the final resultant high-resolution image. This process can be viewed in figure 3.
+                <div class="text-center" id="figure3">
+                    <div class="figures">
+                            <span class="image">
+                                <img src="images/SRLab/figure3-0.jpg"/>
+                            </span>
+                            <span class="image">
+                                <img src="images/SRLab/figure3-1.jpg"/>
+                            </span>
+                            <span class="image">
+                                <img src="images/SRLab/figure3-2.jpg"/>
+                            </span>
+                            <span class="image">
+                                <img src="images/SRLab/figure3-3.jpg"/>
+                            </span>
+                    </div>
+                    <div class="figureFooter">Figure 3. Coarse-to-fine reconstruction process.</div>
+                </div>
             </p>
         </div>
-
+        <div class="col-md-offset-2 col-sm-offset-3 col-sm-8" id="experiments">
+            <h3>Experiments</h3>
+            <p>
+                I employ Microsoft Visual Studio and Matlab SDK to implement my algorithm. The interface of my software
+                is shown in figure 4. Click the ‘Open’ button to browse the input image which is then displayed in the
+                ‘src_img’ panel. Then click other buttons such as ‘NN’, ‘Bicubic’ and ‘Our’s’ to super resolved the input
+                image. The super resolution result is shown in the ‘sr_img’ panel. The image quality assessment indicator
+                is shown in the Table. Figure 5,6,7,8,9 show some super resolution results of our method.
+                <div class="text-center" id="figure4">
+                    <div class="image"><img src="images/SRLab/figure4.jpg"/></div>
+                    <div class="figureFooter">Figure 4. User Interface of our software.</div>
+                </div>
+                Reference:<br />
+                [1]	J.C.Yang, J.Wright, Y.Ma, and T.Huang. Image super-resolution as sparse representation of raw image patches. In CVPR, 2008.<br />
+                [2]	D.Glasner, S.Bagon, and M.Irani. Super-resolution from a single image. In ICCV, 2009.<br />
+                [3]	J.Sun, J.Zhu, and M.F.Tapen. Context-Constrained Hallucination for Image Super-Resolution. In CVPR, 2010.<br />
+                <br />
+                Following is a set of comparisons among Our Algorithm, Nearest Neigobor(NN) interpolation, Bicubic interpolation,
+                Daniel's Algorithm, Yang's Algorithm, Sun's Algorithm and Ground Truth.<br />
+                Instructions:<br />
+                <ul>
+                    <li>Click NN button to see the super resolution result of nearest neibor interpolation.</li>
+                    <li>Click Bicubic button to see the super resolution result of bicubic interpolation.</li>
+                    <li>Click Daniel's Algorithm button to see the result of Daniel's Algorithm</li>
+                    <li>Click Sun's Algorithm button to see the result of Sun's Algorithm.</li>
+                    <li>Click Yang's Algorithm button to see the result of Yang's Algorithm.</li>
+                    <li>Click Our Algorithm button to see the result of Our Algorithm.</li>
+                    <li>Click Ground Truth button to see the original Ground Truth.</li>
+                </ul>
+            </p>
+        </div>
     </div>
 </div>
