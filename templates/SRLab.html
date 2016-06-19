@@ -46,44 +46,79 @@
                 patch can be reconstructed based on this dictionary and inspiration I got from sparse representation.
                 Finally, several experimental results will be demonstrated and compared to state of the art.
                 Firstly, I construct a image pyramid using the imaging model with the subsampling factor of 1.25:<br>
-            <span id="formula1">
-                <img src="images/SRLab/formula1.gif"/>
-            </span><br>
+                <span id="formula1">
+                    <img src="images/SRLab/formula1.gif"/>
+                </span><br>
                 Here, X stands for the original high-resolution image, and Y is the burred and subsampled low-resolution
                 image simulating the imaging process of real imaging devices. H represents the blurring kernel and D is the
                 subsampling operator. An example of this kind of image pyramid is illustrated in figure 1
-            <div class="text-center" id="figure1">
-                <div class="figures">
-                    <span class="image">
-                        <img src="images/SRLab/figure1-0.jpg"/>
-                    </span>
-                    <span class="image">
-                        <img src="images/SRLab/figure1-1.jpg"/>
-                    </span>
-                    <span class="image">
-                        <img src="images/SRLab/figure1-2.jpg"/>
-                    </span>
-                    <span class="image">
-                        <img src="images/SRLab/figure1-3.jpg"/>
-                    </span>
-                    <span class="image">
-                        <img src="images/SRLab/figure1-4.jpg"/>
-                    </span>
-                    <span class="image">
-                        <img src="images/SRLab/figure1-5.jpg"/>
-                    </span>
-                </div>
-                <div class="figureFooter">Figure 1. Low resolution image pyramid.</div>
+                <div class="text-center" id="figure1">
+                    <div class="figures">
+                        <span class="image">
+                            <img src="images/SRLab/figure1-0.jpg"/>
+                        </span>
+                        <span class="image">
+                            <img src="images/SRLab/figure1-1.jpg"/>
+                        </span>
+                        <span class="image">
+                            <img src="images/SRLab/figure1-2.jpg"/>
+                        </span>
+                        <span class="image">
+                            <img src="images/SRLab/figure1-3.jpg"/>
+                        </span>
+                        <span class="image">
+                            <img src="images/SRLab/figure1-4.jpg"/>
+                        </span>
+                        <span class="image">
+                            <img src="images/SRLab/figure1-5.jpg"/>
+                        </span>
+                    </div>
+                    <div class="figureFooter">Figure 1. Low resolution image pyramid.</div>
 
-            </div>
-            Each image of the pyramid is then upsampled to the original scale as the source low-resolution image and serves
-            as the low-resolution training images. Meanwhile, there mutual high-resolution counterparts were chosen to be
-            the original low-resolution input image. Based on this low-resolution / high-resolution image pairs, the
-            low-resolution / high-resolution dictionary can be constructed by the process illustrated in figure 2.
-            <div class="text-center" id="figure2">
-                <div class="image"><img width="369" height="376" src="images/SRLab/figure2.jpg"></div>
-                <div class="figureFooter">Figure 2. Flow chart of low-res/high-res dictionary construction.</div>
-            </div>
+                </div>
+                Each image of the pyramid is then upsampled to the original scale as the source low-resolution image and serves
+                as the low-resolution training images. Meanwhile, there mutual high-resolution counterparts were chosen to be
+                the original low-resolution input image. Based on this low-resolution / high-resolution image pairs, the
+                low-resolution / high-resolution dictionary can be constructed by the process illustrated in figure 2.
+                <div class="text-center" id="figure2">
+                    <div class="image"><img width="369" height="376" src="images/SRLab/figure2.jpg"></div>
+                    <div class="figureFooter">Figure 2. Flow chart of low-res/high-res dictionary construction.</div>
+                </div>
+                Where
+                <span id="formula2">
+                    <img src="images/SRLab/formula2.gif"/>
+                </span>
+                represents the low-resolution images from the image pyramid and
+                <span id="formula3">
+                    <img src="images/SRLab/formula3.gif"/>
+                </span>
+                stands for their corresponding high-resolution images. After finishing the dictionary construction,
+                I then reconstruct each patch in the high-resolution image by raster-scan order. As I mentioned earlier,
+                each low-resolution patch y of the source input image can be represented as a sparse representation with
+                respect to the low-resolution dictionary
+                <span id="formula4">
+                    <img src="images/SRLab/formula4.gif"/>
+                </span>
+                . Then the reconstruction of its high resolution version x can be solved by minimizing the following term:<br>
+                <span id="formula5">
+                    <img src="images/SRLab/formula5.gif"/>
+                </span><br>
+                Where
+                <span id="formula6">
+                    <img src="images/SRLab/formula6.gif"/>
+                </span>
+                gives the sparse representation of <em>y</em> with respect to
+                <span>
+                    <img src="images/SRLab/formula4.gif"/>
+                </span>
+                .Thus, using this sparsest coefficient
+                <span id="formula7">
+                    <img src="images/SRLab/formula7.gif"/>
+                </span>
+                , the high-resolution counterpart of <em>y</em> can be reconstructed as:<br>
+                <span id="formula8">
+                    <img src="images/SRLab/formula8.gif"/>
+                </span>
             </p>
         </div>
 
