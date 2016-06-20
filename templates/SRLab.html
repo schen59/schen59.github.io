@@ -152,7 +152,7 @@
                 </div>
             </p>
         </div>
-        <div class="col-md-offset-2 col-sm-offset-3 col-sm-8" id="experiments">
+        <div class="col-md-offset-2 col-sm-offset-3 col-sm-8" id="experiments" ng-controller="SRLabDemoController">
             <h3>Experiments</h3>
             <p>
                 I employ Microsoft Visual Studio and Matlab SDK to implement my algorithm. The interface of my software
@@ -181,6 +181,62 @@
                     <li>Click Our Algorithm button to see the result of Our Algorithm.</li>
                     <li>Click Ground Truth button to see the original Ground Truth.</li>
                 </ul>
+                <div class="col-xs-6" ng-repeat="demo in demos">
+                    <div class = "panel panel-default">
+                        <div class = "panel-heading">
+                            <h3 class = "panel-title">{{demo.title}}</h3>
+                        </div>
+
+                        <div class = "panel-body">
+                            <div class="col-xs-12">
+                                <a href="#" class = "thumbnail">
+                                    <img src="{{demo.srImg}}">
+                                </a>
+                            </div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{demo.name}}">
+                                Launch
+                            </button>
+                            <div class="modal fade" id="{{demo.name}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h4 class="modal-title">{{demo.title}}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-xs-6">
+                                                    <a href="#" class = "thumbnail">
+                                                        <img src="{{demo.srImg}}">
+                                                    </a>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <div class="col-xs-offset-1">
+                                                        <a href="#" class = "thumbnail">
+                                                            <img src="{{demo.srcImg}}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-xs-12">
+                                                        <button type="button" ng-click="selectImg(demo, 'nn')" class="col-xs-12 btn btn-primary">
+                                                            Nearest Neighbor
+                                                        </button>
+                                                        <button type="button" ng-click="selectImg(demo, 'bicubic')" class="col-xs-12 btn btn-primary">
+                                                            Bicubic
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </p>
         </div>
     </div>
